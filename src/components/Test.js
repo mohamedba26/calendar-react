@@ -21,21 +21,7 @@ export default function Test() {
 
     const handleUpdate=event=>{
         setId(event.event._def.publicId)
-        var timeStart=event.event._instance.range.start
-        timeStart.setHours(timeStart.getHours()-1)
-        var timeEnd=event.event._instance.range.end
-        timeEnd.setHours(timeEnd.getHours()-1)
-        setEvents(events.map(e=>{
-            if(e.id!==event.event._def.publicId)
-                return e
-            else
-            {
-                e.start=timeStart
-                e.end=timeEnd
-                return e
-            }
-        }))
-        setProp({end:event.event._instance.range.start,start:event.event._instance.range.end,id:id})
+        setProp({end:event.event._instance.range.end,start:event.event._instance.range.start,id:id})
         setOpenUpdate(true)
     }
 
